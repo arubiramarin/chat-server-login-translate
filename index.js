@@ -11,6 +11,7 @@ app.get('/', function(req, res){
 io.on('connection', function(socket){
   socket.on('chat message', function(msg){
     translate(msg.message, {from: msg.language, to: 'en'}).then(res => {
+    	msg.allMessages = {};
 	    msg.allMessages['en'] = res.text;
 	    translate(msg.message, {from: msg.language, to: 'es'}).then(res => {
 		    msg.allMessages['es'] = res.text;
