@@ -1,6 +1,7 @@
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+var translate = require('google-translate-api');
 var port = process.env.PORT || 3800;
 
 app.get('/', function(req, res){
@@ -9,7 +10,23 @@ app.get('/', function(req, res){
 
 io.on('connection', function(socket){
   socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
+    translate(msg.message, {from: msg.language, to: 'en'}).then(res => {
+	    msg.allMessages['en'] = res.text;
+	    translate(msg.message, {from: msg.language, to: 'es'}).then(res => {
+		    msg.allMessages['es'] = res.text;
+		    translate(msg.message, {from: msg.language, to: 'fr'}).then(res => {
+			    msg.allMessages['fr'] = res.text;
+			    io.emit('chat message', msg);
+			}).catch(err => {
+			    console.error(err);
+			});
+		}).catch(err => {
+		    console.error(err);
+		});
+	}).catch(err => {
+	    console.error(err);
+	});
+
   });
 });
 

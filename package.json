@@ -1,15 +1,16 @@
 {
-  "name": "node-websocket-server-chat",
+  "name": "node-websocket-server-chat-login-translate",
   "version": "1.0.3",
-  "description": "Server with nodejs and websocket for showcase",
+  "description": "Server with nodejs, login, translate and websocket for showcase",
   "scripts": {
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Antonio Rubira Marín (XE04784)",
-  "license": "Copyright BBVA 2018",
+  "author": "Antonio Rubira Marín",
+  "license": "Copyright 2018",
   "dependencies": {
     "express": "^4.15.2",
+    "google-translate-api": "^2.3.0",
     "socket.io": "^1.7.3"
   }
 }
