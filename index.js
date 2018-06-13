@@ -17,7 +17,12 @@ io.on('connection', function(socket){
 		    msg.allMessages['es'] = res.text;
 		    translate(msg.message, {from: msg.language, to: 'fr'}).then(res => {
 			    msg.allMessages['fr'] = res.text;
-			    io.emit('chat message', msg);
+			    translate(msg.message, {from: msg.language, to: 'ja'}).then(res => {
+				    msg.allMessages['ja'] = res.text;
+				    io.emit('chat message', msg);
+				}).catch(err => {
+				    console.error(err);
+				});
 			}).catch(err => {
 			    console.error(err);
 			});
