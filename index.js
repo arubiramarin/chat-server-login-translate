@@ -5,7 +5,7 @@ var io = require('socket.io')(http);
 // var translate = require('google-translate-api');
 var port = process.env.PORT || 3800;
 var path = require('path');
-var Translate = require('@google-cloud/translate');
+var { Translate } = require('@google-cloud/translate');
 
 // Your Google Cloud Platform project ID
 const projectId = 'maximal-ship-223810';
