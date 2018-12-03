@@ -4,6 +4,8 @@ var io = require('socket.io')(http);
 var translate = require('google-translate-api');
 var port = process.env.PORT || 3800;
 
+app.use('/', express.static(path.join(__dirname, 'dist')));
+
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });

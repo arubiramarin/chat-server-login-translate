@@ -1,0 +1,34 @@
+{
+	"nova": {
+		"thin2": {
+			"cfg": "configuration",
+			"port": "15000",
+			"application": {
+				"name": "Showcase II",
+				"company": "BBVA",
+				"date": "30/11/2016"
+			},
+			"authService": {
+				"urlAuth":"mocks/authMock.json",
+				"uuaa":"UUAA",
+				"timeout":3000,
+				"urlRegExp": "/\/secure\/*/",
+				"urlAuthError": "/AuthErrorState",
+				"urlInternalError": "/InternalErrorState"
+			},
+      "loggers": [
+      {
+        "name": "DefaultLogger",
+        "level": "debug",
+        "appenders": [
+					{
+							"dateFormat": "DD/MM/YYYY HH:mm:ss",
+							"name": "ConsoleAppender",
+							"type": "console"
+					}
+        ]
+      }
+      ]
+		}
+	}
+}
